@@ -1,0 +1,56 @@
+export type Substitution = {
+    lesson: number;
+    course: string;
+    subject: string;
+    room: string;
+    teacher: string;
+    info: string;
+    text: string;
+};
+
+export async function fetchInformation(
+    school: string,
+    formatName: string,
+): Promise<[Array<string>, Array<Substitution>]> {
+    const response = await fetch(
+        "https://untisvertretungsplan.coolepizzayt1860.workers.dev/?school=wilhelm-gym-braunschweig&format=V_S_s2EnbAyEk_heute",
+    );
+    const data = await response.json();
+    let substitutions: Substitution[] = [];
+
+    data.payload.rows.forEach((row: any) => {
+        substitutions.push({
+            lesson: parseInt(row.data[0]),
+            course: row.data[1],
+            subject: row.data[2],
+            room: row.data[3],
+            teacher: row.data[4],
+            info: row.data[5],
+            text: row.data[6],
+        });
+    })
+
+    substitutions = substitutions.sort((a, b) => {
+        let aLevel = "";
+        let bLevel = "";
+        let i = 0;
+        while (!isNaN(parseInt(a.course[i]))) {
+            aLevel = aLevel + a.course[i];
+            i++;
+        }
+        i = 0;
+        while (!isNaN(parseInt(b.course[i]))) {
+            bLevel += b.course[i];
+            i++;
+        }
+        return parseInt(aLevel) - parseInt(bLevel);
+    });
+
+
+    const messages: string[] = [];
+
+    data.payload.messageData.messages.forEach((message: any) => {
+        messages.push(message.body);
+    });
+    return [messages, substitutions];
+}
