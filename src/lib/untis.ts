@@ -12,7 +12,7 @@ export async function fetchInformation(
     school: string,
     formatName: string,
     dateOffset: number,
-): Promise<[Array<string>, Array<Substitution>, string, string]> {
+): Promise<[Array<string>, Array<Substitution>, string, string, string]> {
     const response = await fetch(
         `https://untisvertretungsplan.jogaxel.workers.dev/?school=${school}&format=${formatName}&dateOffset=${dateOffset}`,
     );
@@ -53,5 +53,5 @@ export async function fetchInformation(
     data.payload.messageData.messages.forEach((message: any) => {
         messages.push(message.body);
     });
-    return [messages, substitutions, data.payload.lastUpdate, data.payload.weekDay];
+    return [messages, substitutions, data.payload.lastUpdate, data.payload.weekDay, data.payload.affectedElements[0].join(", ")];
 }

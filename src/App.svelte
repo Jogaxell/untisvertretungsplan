@@ -9,7 +9,7 @@
   const dateOffset = parseInt(params.get("dateOffset") || "0");
   console.log(params.get("dateOffset"), console.log(dateOffset));
   
-  let data: [Array<string>, Array<Substitution>, string, string] = null;
+  let data: [Array<string>, Array<Substitution>, string, string, string] = null;
   onMount(async () => {
     if (!school || !format) return;
     data = await fetchInformation(school, format, dateOffset);
@@ -24,6 +24,7 @@
       <p>{@html message}</p>
     {/each}
   </div>
+  <p>Betroffende Klassen: {data[4]}</p>
   <SubstitutionPlanComponent substitutions={data[1]} />
 {:else}
   <p>Die erforderlichen Parameter wurden nicht angegeben.</p>
