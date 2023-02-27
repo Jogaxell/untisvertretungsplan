@@ -22,7 +22,7 @@ export async function fetchInformation(
     data.payload.rows.forEach((row: any) => {
         substitutions.push({
             lesson: parseInt(row.data[0]),
-            course: row.data[1],
+            course: row.group,
             subject: row.data[2],
             room: row.data[3],
             teacher: row.data[4],
