@@ -54,7 +54,6 @@ export async function fetchInformation(
         messages.push(message.body);
     });
 
-    console.log(data.payload.affectedElements.get("1").join(", "));
     console.log(data.payload.affectedElements);
     
 
