@@ -9,7 +9,7 @@
   const dateOffset = parseInt(params.get("dateOffset") || "0");
   console.log(params.get("dateOffset"), console.log(dateOffset));
   
-  let data: [Array<string>, Array<Substitution>] = null;
+  let data: [Array<string>, Array<Substitution>, string] = null;
   onMount(async () => {
     if (!school || !format) return;
     data = await fetchInformation(school, format, dateOffset);
@@ -18,7 +18,7 @@
 
 {#if data}
   <h1>Vertretungsplan</h1>
-
+  <p>Letztes Update: {data[2]}</p>
   <div class="messages">
     {#each data[0] as message}
       <p>{@html message}</p>
