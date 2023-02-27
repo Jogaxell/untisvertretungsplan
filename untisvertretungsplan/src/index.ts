@@ -2,7 +2,6 @@
 export interface Env {
 
 }
-
 function getTodayDate(): number {
 	const date = new Date();
 	const year = date.getFullYear();
@@ -22,6 +21,7 @@ export default {
 		const { searchParams } = new URL(request.url);
 		const school = searchParams.get("school");
 		const format = searchParams.get("format");
+		const dateOffset = parseInt(searchParams.get("dateOffset"));
 		if (!school || !format) return new Response("Missing parameters", { status: 400 });
 		const response = await fetch("https://kephiso.webuntis.com/WebUntis/monitor/substitution/data?school=" + school, {
 			method: "POST",
@@ -32,10 +32,10 @@ export default {
 				formatName: format,
 				schoolName: school,
 				date: getTodayDate(),
-				dateOffset: 0,
+				dateOffset: dateOffset,
 				strikethrough: false,
 				mergeBlocks: false,
-				showOnlyFutureSub: true,
+				showOnlyFutureSub: false,
 				showBreakSupervisions: false,
 				showTeacher: true,
 				showClass: true,
