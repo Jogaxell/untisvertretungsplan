@@ -6,7 +6,7 @@
   const params = new URLSearchParams(window.location.search);
   const school = params.get("school");
   const format = params.get("format");
-  let data: [Array<string>, Array<Substitution>] = [[], []];
+  let data: [Array<string>, Array<Substitution>] = null;
   onMount(async () => {
     if (!school || !format) return;
     data = await fetchInformation(school, format);
@@ -22,4 +22,6 @@
     {/each}
   </div>
   <SubstitutionPlanComponent substitutions={data[1]} />
+{:else}
+  <p>Die erforderlichen Parameter wurden nicht angegeben.</p>
 {/if}
