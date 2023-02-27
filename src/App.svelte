@@ -19,6 +19,7 @@
   <h1>Vertretungsplan {data[3]}</h1>
   <p>Letztes Update: {data[2]}</p>
   <div class="messages">
+    <p>Aktuelle Nachrichten</p>
     {#each data[0] as message}
       <p>{@html message}</p>
     {/each}
