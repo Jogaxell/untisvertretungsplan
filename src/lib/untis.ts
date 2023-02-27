@@ -53,5 +53,10 @@ export async function fetchInformation(
     data.payload.messageData.messages.forEach((message: any) => {
         messages.push(message.body);
     });
+
+    console.log(data.payload.affectedElements.get("1").join(", "));
+    console.log(data.payload.affectedElements);
+    
+
     return [messages, substitutions, data.payload.lastUpdate, data.payload.weekDay, "test"];
 }
