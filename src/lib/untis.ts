@@ -13,7 +13,7 @@ export async function fetchInformation(
     formatName: string,
 ): Promise<[Array<string>, Array<Substitution>]> {
     const response = await fetch(
-        "https://untisvertretungsplan.coolepizzayt1860.workers.dev/?school=wilhelm-gym-braunschweig&format=V_S_s2EnbAyEk_heute",
+        `https://untisvertretungsplan.jogaxel.workers.dev/?school=${school}&format=${formatName}`,
     );
     const data = await response.json();
     let substitutions: Substitution[] = [];
