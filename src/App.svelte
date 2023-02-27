@@ -22,4 +22,5 @@
     {/each}
   </div>
   <SubstitutionPlanComponent substitutions={data[1]} />
+  <p>Build by Cedric Mack, Johannes Hartlepp</p>
 {/if}
