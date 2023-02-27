@@ -21,7 +21,7 @@ export default {
 		const { searchParams } = new URL(request.url);
 		const school = searchParams.get("school");
 		const format = searchParams.get("format");
-		const dateOffset = parseInt(searchParams.get("dateOffset"));
+		const dateOffset = parseInt(searchParams.get("dateOffset") || "0");
 		if (!school || !format) return new Response("Missing parameters", { status: 400 });
 		const response = await fetch("https://kephiso.webuntis.com/WebUntis/monitor/substitution/data?school=" + school, {
 			method: "POST",
