@@ -6,10 +6,13 @@
   const params = new URLSearchParams(window.location.search);
   const school = params.get("school");
   const format = params.get("format");
+  const dateOffset = parseInt(params.get("dateOffset") || "0");
+  console.log(params.get("dateOffset"), console.log(dateOffset));
+  
   let data: [Array<string>, Array<Substitution>] = null;
   onMount(async () => {
     if (!school || !format) return;
-    data = await fetchInformation(school, format);
+    data = await fetchInformation(school, format, dateOffset);
   });
 </script>
 

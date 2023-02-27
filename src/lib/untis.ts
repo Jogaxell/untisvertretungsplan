@@ -11,9 +11,10 @@ export type Substitution = {
 export async function fetchInformation(
     school: string,
     formatName: string,
+    dateOffset: number,
 ): Promise<[Array<string>, Array<Substitution>]> {
     const response = await fetch(
-        `https://untisvertretungsplan.jogaxel.workers.dev/?school=${school}&format=${formatName}`,
+        `https://untisvertretungsplan.jogaxel.workers.dev/?school=${school}&format=${formatName}&dateOffset=${dateOffset}`,
     );
     const data = await response.json();
     let substitutions: Substitution[] = [];
