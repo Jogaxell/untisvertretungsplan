@@ -54,7 +54,7 @@ export async function fetchInformation(
         messages.push(message.body);
     });
 
-    console.log(data.payload.affectedElements);
+    console.log(data.payload.affectedElements.get("1"));
     
 
     return [messages, substitutions, data.payload.lastUpdate, data.payload.weekDay, "test"];
