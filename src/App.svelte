@@ -7,7 +7,6 @@
   const school = params.get("school");
   const format = params.get("format");
   const dateOffset = parseInt(params.get("dateOffset") || "0");
-  console.log(params.get("dateOffset"), console.log(dateOffset));
   
   let data: [Array<string>, Array<Substitution>, string, string, string] = null;
   onMount(async () => {
