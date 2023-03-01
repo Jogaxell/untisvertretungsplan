@@ -29,5 +29,4 @@
 {:else}
   <p>Die erforderlichen Parameter wurden nicht angegeben.</p>
 {/if}
-
-<p>Build by Cedric Mack, Johannes Hartlepp</p>
+<small>Build by Cedric Mack, Johannes Hartlepp</small>

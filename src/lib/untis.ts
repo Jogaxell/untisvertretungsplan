@@ -47,6 +47,11 @@ export async function fetchInformation(
         return parseInt(aLevel) - parseInt(bLevel);
     });
 
+    let betroffeneKlassen = substitutions.map((substitution) => substitution.course)
+    betroffeneKlassen = betroffeneKlassen.filter(function(item, pos) {
+        return betroffeneKlassen.indexOf(item) == pos;
+    })
+
 
     const messages: string[] = [];
 
@@ -54,5 +59,5 @@ export async function fetchInformation(
         messages.push(message.body);
     });
 
-    return [messages, substitutions, data.payload.lastUpdate, data.payload.weekDay, data.payload.affectedElements["1"].join(", "), `${data.payload.date.toString().slice(6, 8)}.${data.payload.date.toString().slice(4, 6)}.${data.payload.date.toString().slice(0, 4)}`];
+    return [messages, substitutions, data.payload.lastUpdate, data.payload.weekDay, betroffeneKlassen.join(", "), `${data.payload.date.toString().slice(6, 8)}.${data.payload.date.toString().slice(4, 6)}.${data.payload.date.toString().slice(0, 4)}`];
 }
