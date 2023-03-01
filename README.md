@@ -1,3 +1,4 @@
+https://untisvertretungsplan.pages.dev/?school=wilhelm-gym-braunschweig&format=V_S_s2EnbAyEk_morgen&dateOffset=1
 # Svelte + TS + Vite
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
